@@ -34,11 +34,16 @@ var donationTotal = 0;
 // This will calculate the donation total
 donors.forEach(calcSum);
 
+// The summaryTable variable will be storing the given HTML code
+var summaryTable = " <table > < tr > < th > Donors < /th><td>" + donors.array + "</td > < /tr> <tr><th>Total Donations</th > < td > $" + donationTotal.toLocalString() + "< /td></tr > </table >";
+
 //
-var summaryTable = " <table > < tr > < th > Donors < /th><td> donors </td > < /tr> <tr><th>Total Donations</th > < td > $" + donationtotal + "< /td></tr > </table >";
+document.getElementById(donationSummary).innerHTML = summaryTable;
+
+//
+function findMajorDonors(majorDonors) {}
 
 
-document.getElementById("donorTable").innerHTML = donorTable;
 
 function calcSum(donorAmt) {
       donationTotal += donorAmt[9];
