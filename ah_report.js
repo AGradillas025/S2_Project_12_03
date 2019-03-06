@@ -35,13 +35,28 @@ var donationTotal = 0;
 donors.forEach(calcSum);
 
 // The summaryTable variable will be storing the given HTML code
-var summaryTable = " <table > < tr > < th > Donors < /th><td>" + donors.array + "</td > < /tr> <tr><th>Total Donations</th > < td > $" + donationTotal.toLocalString() + "< /td></tr > </table >";
+var summaryTable = "<table> <tr><th>Donors</th><td>" + donors.length + "</td></tr> <tr><th>Total Donations</th><td>$ " + donationTotal.toLocaleString() + "</td></tr> </table>";
 
-//
-document.getElementById(donationSummary).innerHTML = summaryTable;
+// Sets the innerHTML property of the div element with the id of donationSummary to the value of the variable summaryTable
+document.getElementById('donationSummary').innerHTML = summaryTable;
 
-//
-function findMajorDonors(majorDonors) {}
+// Using the filter method with the callback function of findMajorDonors, an array was created named findMajorDonors and this will allow the report to show a list of the donors who contributed more than $1000 or more to the Appalachian House
+var majorDonors = donors.filter(findMajorDonors);
+
+// The sort method was applied to the majorDonors variable using the callback function donorSortDescending, and this allows the list of the major donors to be sorted in descending order
+majorDonors.sort(donorSortDescending);
+
+// The variable donorTable will store the following HTML code that was given for the table of major donors
+var donorTable = "<table><caption>Major Donors</caption><tr><th>Donation</th><th>Donor ID</th><th>Date</th><th>Name</th><th>Address</th><th>Phone</th><th>E-mail</th></tr>";
+
+// The HTML code was created for each donor row by applying the forEach method to the majorDonor variable, using the writeDonorRow as the callback function
+majorDonors.forEach(writeDonorRow);
+
+// The text string "</table>" was added to the value of the donorTable variable
+donorTable += "</table>";
+
+// The innerHTML property of the div element with the id donorTable to the value of the donorTable was set to allow all the following JS code to be published on the website
+document.getElementById("donorTable").innerHTML = donorTable;
 
 
 
